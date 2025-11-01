@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faculty of Engineering — University of Barishal</title>
+    <meta name="description" content="Faculty of Engineering at the University of Barishal." />
+    <style>
+        :root {
+            --brand: #0aa3a3;
+            --brand-2: #a8cf45;
+            --ink: #0d1b2e;
+            --muted: #64748b;
+            --line: #e6ebf3;
+            --white: #ffffff;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(2, 12, 27, .08);
+            --max: 1200px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
+            color: var(--ink);
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                url('background.jpg') center/cover fixed no-repeat;
+            line-height: 1.6;
+        }
+
+        .wrap {
+            width: min(var(--max), 100% - 2rem);
+            margin-inline: auto
+        }
+
+        /* Top bar */
+        .topbar {
+            background: #0f1a2e;
+            color: #dbe7ff
+        }
+
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .45rem 0
+        }
+
+        .ub {
+            font-weight: 700;
+            letter-spacing: .6px
+        }
+
+        .top-actions a {
+            color: #dbe7ff;
+            margin-left: 1rem;
+            font-size: .95rem
+        }
+
+        .top-actions a:hover {
+            opacity: .85
+        }
+
+        /* Nav */
+        .site-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: .8rem 0
+        }
+
+        .brand img {
+            width: 120px;
+            height: auto
+        }
+
+        .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem 1rem;
+            margin-left: auto
+        }
+
+        .main-nav>a,
+        .main-nav>.has-drop>a {
+            padding: .55rem .7rem;
+            border-radius: 10px;
+            color: #334155
+        }
+
+        .main-nav>a:hover,
+        .main-nav>.has-drop>a:hover {
+            background: #f5f9ff;
+            color: #0a1f2e
+        }
+
+        .has-drop {
+            position: relative
+        }
+
+        .has-drop .drop {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: none;
+            padding: .4rem;
+            margin-top: .25rem;
+            z-index: 10
+        }
+
+        .has-drop:hover .drop {
+            display: block
+        }
+
+        .drop a {
+            display: block;
+            padding: .55rem .6rem;
+            border-radius: 8px;
+            color: #374151
+        }
+
+        .drop a:hover {
+            background: #f6fbff;
+            color: #0a1f2e
+        }
+
+        /* Hero section */
+        .page-hero {
+            background: linear-gradient(rgba(7, 16, 38, 0.55), rgba(7, 16, 38, 0.55)),
+                url('background.jpg') center/cover no-repeat;
+            border-bottom: 1px solid var(--line);
+            color: #fff;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-hero .wrap {
+            padding: 4rem 0;
+            text-align: center
+        }
+
+        .page-hero h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: .5rem
+        }
+
+        .breadcrumb {
+            margin: 0;
+            color: #d7e2ee
+        }
+
+        .breadcrumb a {
+            color: #a8cf45
+        }
+
+        /* Welcome + Dean */
+        .welcome {
+            padding: 2.2rem 0
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 1.5rem
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            margin: .2rem 0 .8rem 0;
+            letter-spacing: .2px
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(4px)
+        }
+
+        .dean-body {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 1rem;
+            align-items: start
+        }
+
+        .dean-photo {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--line)
+        }
+
+        .dean-text h3 {
+            margin: .2rem 0
+        }
+
+        .muted {
+            color: #70839c
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: .4rem;
+            padding: .6rem .8rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: #042026;
+            font-weight: 700
+        }
+
+        /* Departments */
+        .departments {
+            padding: 2.2rem 0
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem
+        }
+
+        .dept.card {
+            padding: 0;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px)
+        }
+
+        .dept-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover
+        }
+
+        .dept-body {
+            padding: 1rem
+        }
+
+        .dept-body h3 {
+            margin: .2rem 0 1rem 0;
+            font-size: 1.05rem;
+            line-height: 1.35
+        }
+
+        .link {
+            color: #0a7ea3;
+            font-weight: 600
+        }
+
+        .link:hover {
+            text-decoration: underline
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0f1a2e;
+            color: #dbe7ff;
+            margin-top: 1.5rem
+        }
+
+        .foot-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 2rem 0
+        }
+
+        .foot-title {
+            margin: .2rem 0 .6rem 0
+        }
+
+        .foot-sub {
+            margin: .2rem 0 .6rem 0;
+            font-size: 1rem
+        }
+
+        .foot-links {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .foot-links li+li {
+            margin-top: .25rem
+        }
+
+        .foot-links a {
+            color: #c9dafb
+        }
+
+        .foot-links a:hover {
+            opacity: .85
+        }
+
+        .copy {
+            border-top: 1px solid rgba(255, 255, 255, .15);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #c2d4ff
+        }
+
+        .credits {
+            opacity: .85
+        }
+
+        /* Responsive */
+        @media (max-width:1020px) {
+            .grid-2 {
+                grid-template-columns: 1fr
+            }
+
+            .dept-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .brand img {
+                width: 110px
+            }
+        }
+
+        @media (max-width:640px) {
+            .dept-grid {
+                grid-template-columns: 1fr
+            }
+
+            .foot-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media (max-width:460px) {
+            .foot-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="wrap topbar-inner">
+            <span class="ub">UNIVERSITY OF BARISHAL</span>
+            <div class="top-actions">
+                <a href="#contact">CONTACT US</a>
+                <a href="#login">LOGIN</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="wrap nav-row">
+            <a class="brand" href="#">
+                <img src="university logo.jpg" alt="University of Barishal Logo" />
+            </a>
+            <nav class="main-nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Academics</a>
+                <a href="#">Administration</a>
+                <a href="#">Faculties</a>
+                <a href="#">Publications</a>
+                <a href="#">Research</a>
+                <a href="#">Notice</a>
+                <a href="#">Gallery</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="wrap">
+            <h1>Faculty of Engineering</h1>
+            <p class="breadcrumb"><a href="#">Home</a> / <span>Faculty of Engineering</span></p>
+        </div>
+    </section>
+
+    <!-- Welcome & Dean -->
+    <section class="welcome">
+        <div class="wrap grid-2">
+            <div>
+                <h2 class="section-title">WELCOME MESSAGE</h2>
+                <p>Welcome to the Faculty of Engineering at the University of Barishal. We aim to
+                    empower students with rigorous technical education, research opportunities,
+                    and strong industry engagement.</p>
+            </div>
+
+            <article class="dean card">
+                <h2 class="section-title">MESSAGE FROM THE FACULTY DEAN</h2>
+                <div class="dean-body">
+                    <img src="dean.jpg" alt="Dean of Faculty" class="dean-photo" />
+                    <div class="dean-text">
+                        <h3>Dr. Rahat Hossain Faysal</h3>
+                        <p class="muted">Dean of Faculty</p>
+                        <p>“Our programs are designed to prepare future-ready engineers through modern
+                            labs, project-based learning, and collaboration.”</p>
+                        <a href="#" class="btn">Read more →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Departments -->
+    <section class="departments">
+        <div class="wrap">
+            <h2 class="section-title">LIST OF DEPARTMENTS</h2>
+            <div class="dept-grid">
+                <article class="dept card">
+                    <img src="cse.jpg" alt="Department of CSE" class="dept-img" />
+                    <div class="dept-body">
+                        <h3>Department of Computer Science<br>&amp; Engineering</h3>
+                        <a href="#" class="link">VIEW WEBSITE →</a>
+                    </div>
+                </article>
+                <article class="dept card">
+                    <img src="eee.jpg" alt="Department of EEE" class="dept-img" />
+                    <div class="dept-body">
+                        <h3>Department of Electrical and<br>Electronic Engineering</h3>
+                        <a href="#" class="link">VIEW WEBSITE →</a>
+                    </div>
+                </article>
+                <article class="dept card">
+                    <img src="ce.jpg" alt="Department of Civil Engineering" class="dept-img" />
+                    <div class="dept-body">
+                        <h3>Department of Civil Engineering</h3>
+                        <a href="#" class="link">VIEW WEBSITE →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="contact">
+        <div class="wrap foot-grid">
+            <div>
+                <h3 class="foot-title">University Of Barishal</h3>
+                <p>Kornokathi, Barishal-8254, Bangladesh</p>
+                <p>Phone: 0244821020–29<br>Email: registrar@bu.ac.bd<br>Fax: 0244821030</p>
+            </div>
+            <div>
+                <h4 class="foot-sub">Academics</h4>
+                <ul class="foot-links">
+                    <li><a href="#">Academic Programs</a></li>
+                    <li><a href="#">Academic Calendar</a></li>
+                    <li><a href="#">Journal Access</a></li>
+                    <li><a href="#">Scholarships</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="foot-sub">Admission</h4>
+                <ul class="foot-links">
+                    <li><a href="#">Undergraduate</a></li>
+                    <li><a href="#">Postgraduate</a></li>
+                    <li><a href="#">EMBA Program</a></li>
+                    <li><a href="#">Foreign Students</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="foot-sub">Important Links</h4>
+                <ul class="foot-links">
+                    <li><a href="#">Old Website</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">UGC</a></li>
+                    <li><a href="#">National Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap copy">
+            <span>© 2025 University of Barishal. All Rights Reserved.</span>
+            <span class="credits">Reference: <strong>Md Omar Faruk</strong></span>
+        </div>
+    </footer>
+</body>
+
+</html>
